@@ -62,7 +62,7 @@ class Queu<T>{
 
 public class Circular_Queu_Implementation{
     public static void main(String[] args){
-        Queu<Integer> q = new Queu<>(5);
+        Queu<Integer> q = new Queu<>(5); // using generics 
         q.add(10);
         q.add(20);
         q.add(30);
