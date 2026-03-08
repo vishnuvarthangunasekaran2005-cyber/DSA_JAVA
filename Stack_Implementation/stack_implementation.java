@@ -1,10 +1,12 @@
 class stack<T>{
     private T [] arr;
     private int top;
+
     public stack(int  size){
         arr = (T[])new Object[size];
         top  = -1;
     }
+    
     public boolean isFull(){
         return top == arr.length-1;
     }
