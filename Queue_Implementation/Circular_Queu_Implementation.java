@@ -14,7 +14,7 @@ class Queu<T>{
     }
 
     public boolean isEmpty(){
-        return front == -1;
+        return front == -1 ;
     }
 
     public void add(T data){

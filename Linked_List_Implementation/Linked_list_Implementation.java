@@ -55,7 +55,6 @@ class LinkedList<T>{
             System.out.print(temp.data + " ==> ");
             temp = temp.next;
         }
-
         System.out.println("Null");
     }
 
@@ -104,7 +103,7 @@ class LinkedList<T>{
     }
     public void insertPosition(T data, int pos){
         if(pos < 0 || pos > length){
-            System.out.println("invalid position");
+            System.out.println("Invalid position");
             return;
         }
         if(pos == 0){
@@ -115,16 +114,38 @@ class LinkedList<T>{
             addLast(data);
             return;
         }
-        Node<T> temp = new Node<>(data);
+        Node<T> newNode = new Node<>(data);
         Node<T> curr = head;
-        for(int i = 0;i<pos - 1;i++){
+        for(int i = 0; i < pos - 1; i++){
             curr = curr.next;
         }
-        temp.next  = curr.next;
-        curr.next.prev = temp;
-        temp.prev = curr;
-        curr.next = temp;
+        newNode.next = curr.next;
+        newNode.prev = curr;
+        curr.next.prev = newNode;
+        curr.next = newNode;
         length++;
+    }
+    public void deletePosition(int pos){
+        if(pos < 0 || pos >= length){
+            System.out.println("Invalid position");
+            return;
+        }
+        if(pos == 0){
+            removeFirst();
+            return;
+        }
+        if(pos == length-1){
+            removeLast();
+            return;
+        }
+        Node<T> temp = head;
+        for(int i = 0;i<pos;i++){
+            temp = temp.next;
+        }
+        temp.prev.next = temp.next;
+        temp.next.prev = temp.prev;
+        length--;
+
     }
 }
 // main class 
