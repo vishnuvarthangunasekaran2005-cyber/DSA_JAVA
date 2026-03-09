@@ -31,13 +31,11 @@ class LinkedList<T>{
             head.prev = temp;
             head = temp;
         }
-
         length++;
     }
 
     public void addLast(T data){
         Node<T> temp = new Node<>(data);
-
         if(tail == null){
             head = tail = temp;
         }else{
@@ -51,7 +49,6 @@ class LinkedList<T>{
 
     public void display(){
         Node<T> temp = head;
-
         System.out.print("Head ==> ");
 
         while(temp != null){
@@ -74,7 +71,6 @@ class LinkedList<T>{
             head = head.next;
             head.prev = null;
         }
-
         length--;
     }
 
@@ -83,24 +79,21 @@ class LinkedList<T>{
             System.out.println("List is empty");
             return;
         }
-
         if(head == tail){
             head = tail = null;
         }else{
             tail = tail.prev;
             tail.next = null;
         }
-
         length--;
     }
 
     public int size(){
         return length;
     }
-
+    
     public boolean contains(T data){
         Node<T> temp = head;
-
         while(temp != null){
             if(temp.data.equals(data)){
                 return true;
@@ -109,8 +102,32 @@ class LinkedList<T>{
         }
         return false;
     }
+    public void insertPosition(T data, int pos){
+        if(pos < 0 || pos > length){
+            System.out.println("invalid position");
+            return;
+        }
+        if(pos == 0){
+            addFirst(data);
+            return;
+        }
+        if(pos == length){
+            addLast(data);
+            return;
+        }
+        Node<T> temp = new Node<>(data);
+        Node<T> curr = head;
+        for(int i = 0;i<pos - 1;i++){
+            curr = curr.next;
+        }
+        temp.next  = curr.next;
+        curr.next.prev = temp;
+        temp.prev = curr;
+        curr.next = temp;
+        length++;
+    }
 }
-
+// main class 
 public class Linked_list_Implementation{
     public static void main(String[] args){
         LinkedList<Integer> ll = new LinkedList<>();
@@ -118,7 +135,7 @@ public class Linked_list_Implementation{
         ll.addFirst(2);
         ll.addFirst(3);
         ll.addFirst(4);
-
+        ll.insertPosition(100,4);
         ll.display();
     }
 }
