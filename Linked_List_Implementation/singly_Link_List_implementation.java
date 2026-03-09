@@ -129,6 +129,16 @@ class linklist{
         }
         head = curr;
     }
+    public boolean contains(int data){
+        Node temp = head;
+        while(temp != null){
+            if(temp.data == data){
+                return true;
+            }
+            temp = temp.next;
+        }
+        return false;
+    }
 }
 public class singly_Link_List_implementation {
     public static void main(String [] args){
