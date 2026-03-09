@@ -10,11 +10,13 @@ class linklist{
     private Node head;
     private Node tail;
     private int size;
+
     public linklist(){
         head = null;
         tail = null;
         size = 0;
     }
+
     public void addFirst(int data){
         Node temp = new Node(data);
         if(head == null){
@@ -25,6 +27,7 @@ class linklist{
         }
         size++;
     }
+
     public void addLast(int data){
         Node temp = new Node(data);
         if(tail == null){
@@ -35,6 +38,7 @@ class linklist{
         }
         size++;
     }
+
     public void removeFirst(){
         if(head == null){
             System.out.print("List is empty");
@@ -47,6 +51,7 @@ class linklist{
         head = head.next;
         size--;
     }
+
     public void removeLast(){
         if(tail == null){
             System.out.println("List is Empty");
@@ -65,6 +70,7 @@ class linklist{
         tail.next = null;
         size--;
     }
+
     public void display(){
         Node temp = head;
         System.out.print("Head ==> ");
@@ -74,6 +80,7 @@ class linklist{
         }
         System.out.print(" tail");
     }
+
     public void insertposition(int data,int pos){
         if(pos <0 || pos > size){
             System.out.println("Invalid position");
@@ -98,6 +105,7 @@ class linklist{
 
         size++;
     }
+
     public void deletePosition(int pos){
         if(pos < 0 || pos >= size){
             System.out.println("Invalid Position");
@@ -117,6 +125,7 @@ class linklist{
         temp.next = temp.next.next;
         size--;
     }
+
     public void reverse(){
         Node prev = null;
         Node curr = null ;
@@ -129,6 +138,7 @@ class linklist{
         }
         head = curr;
     }
+
     public boolean contains(int data){
         Node temp = head;
         while(temp != null){
@@ -138,6 +148,16 @@ class linklist{
             temp = temp.next;
         }
         return false;
+    }
+    
+    public int size(){
+        Node temp = head;
+        int count  =0;
+        while(temp != null){
+            count++;
+            temp = temp.next;
+        }
+        return count;
     }
 }
 public class singly_Link_List_implementation {
