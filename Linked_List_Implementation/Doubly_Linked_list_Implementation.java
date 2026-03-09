@@ -5,7 +5,7 @@ class Node<T>{
 
     public Node(T data){
         this.data = data;
-        prev = null;
+        prev = null;    
         next = null;
     }
 }
@@ -43,7 +43,6 @@ class LinkedList<T>{
             tail.next = temp;
             tail = temp;
         }
-
         length++;
     }
 
@@ -145,11 +144,10 @@ class LinkedList<T>{
         temp.prev.next = temp.next;
         temp.next.prev = temp.prev;
         length--;
-
     }
 }
 // main class 
-public class Linked_list_Implementation{
+public class Doubly_Linked_list_Implementation{
     public static void main(String[] args){
         LinkedList<Integer> ll = new LinkedList<>();
         ll.addFirst(1);
