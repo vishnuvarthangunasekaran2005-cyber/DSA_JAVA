@@ -149,18 +149,30 @@ class LinkedList<T>{
 
         length--;
     }
+    public void reverse(){
+        Nodes<T> prev = null;
+        Nodes<T> curr = null;
+        Nodes<T> nnn = head;
+
+        while(nnn != null){
+            prev = curr;
+            curr = nnn;
+            nnn = nnn.next;
+            curr.next = prev;
+        }
+        head = curr;
+    }
 }
 
 public class Doubly_Linked_list_Implementation{
     public static void main(String[] args){
-
         LinkedList<Integer> ll = new LinkedList<>(); // using generics
         ll.addFirst(1);
         ll.addFirst(2);
         ll.addFirst(3);
         ll.addFirst(4);
-        ll.insertPosition(100,4);
-
+        //ll.insertPosition(100,4);
+        ll.reverse();
         ll.display();
     }
 }
