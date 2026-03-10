@@ -1,18 +1,16 @@
-class Node<T>{
+class Nodes<T>{
     T data;
-    Node<T> prev;
-    Node<T> next;
-
-    public Node(T data){
+    Nodes<T> prev;
+    Nodes<T> next;
+    public Nodes(T data){
         this.data = data;
         prev = null;    
         next = null;
     }
 }
-
 class LinkedList<T>{
-    private Node<T> head;
-    private Node<T> tail;
+    private Nodes<T> head;
+    private Nodes<T> tail;
     private int length;
 
     public LinkedList(){
@@ -20,10 +18,8 @@ class LinkedList<T>{
         tail = null;
         length = 0;
     }
-
     public void addFirst(T data){
-        Node<T> temp = new Node<>(data);
-
+        Nodes<T> temp = new Nodes<>(data);
         if(head == null){
             head = tail = temp;
         }else{
@@ -33,9 +29,8 @@ class LinkedList<T>{
         }
         length++;
     }
-
     public void addLast(T data){
-        Node<T> temp = new Node<>(data);
+        Nodes<T> temp = new Nodes<>(data);
         if(tail == null){
             head = tail = temp;
         }else{
@@ -45,9 +40,8 @@ class LinkedList<T>{
         }
         length++;
     }
-
     public void display(){
-        Node<T> temp = head;
+        Nodes<T> temp = head;
         System.out.print("Head ==> ");
 
         while(temp != null){
@@ -56,7 +50,6 @@ class LinkedList<T>{
         }
         System.out.println("Null");
     }
-
     public void removeFirst(){
         if(head == null){
             System.out.println("List is empty");
@@ -71,7 +64,6 @@ class LinkedList<T>{
         }
         length--;
     }
-
     public void removeLast(){
         if(tail == null){
             System.out.println("List is empty");
@@ -85,39 +77,46 @@ class LinkedList<T>{
         }
         length--;
     }
-
     public int size(){
         return length;
     }
     
     public boolean contains(T data){
-        Node<T> temp = head;
+        Nodes<T> temp = head;
+
         while(temp != null){
             if(temp.data.equals(data)){
                 return true;
             }
             temp = temp.next;
         }
+
         return false;
     }
+
     public void insertPosition(T data, int pos){
         if(pos < 0 || pos > length){
             System.out.println("Invalid position");
             return;
         }
+
         if(pos == 0){
             addFirst(data);
             return;
         }
+
         if(pos == length){
             addLast(data);
             return;
         }
-        Node<T> newNode = new Node<>(data);
-        Node<T> curr = head;
+
+        Nodes<T> newNode = new Nodes<>(data);
+        Nodes<T> curr = head;
+
         for(int i = 0; i < pos - 1; i++){
             curr = curr.next;
         }
+
         newNode.next = curr.next;
         newNode.prev = curr;
         curr.next.prev = newNode;
@@ -129,32 +128,39 @@ class LinkedList<T>{
             System.out.println("Invalid position");
             return;
         }
+
         if(pos == 0){
             removeFirst();
             return;
         }
+
         if(pos == length-1){
             removeLast();
             return;
         }
-        Node<T> temp = head;
-        for(int i = 0;i<pos;i++){
+
+        Nodes<T> temp = head;
+        for(int i = 0; i < pos; i++){
             temp = temp.next;
         }
+
         temp.prev.next = temp.next;
         temp.next.prev = temp.prev;
+
         length--;
     }
 }
-// main class 
+
 public class Doubly_Linked_list_Implementation{
     public static void main(String[] args){
-        LinkedList<Integer> ll = new LinkedList<>();
+
+        LinkedList<Integer> ll = new LinkedList<>(); // using generics
         ll.addFirst(1);
         ll.addFirst(2);
         ll.addFirst(3);
         ll.addFirst(4);
         ll.insertPosition(100,4);
+
         ll.display();
     }
 }
