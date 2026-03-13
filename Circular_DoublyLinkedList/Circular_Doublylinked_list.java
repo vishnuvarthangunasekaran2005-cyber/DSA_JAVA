@@ -127,8 +127,8 @@ class linkedlist{
         }
         node temp = head;
         node newnode = new node(data);
-        for(int i =0;i<pos-1;i++){
-            temp  = temp.next;
+        for(int i = 0;i<pos-1;i++){
+            temp = temp.next;
         }
         newnode.next = temp.next;
         temp.next.prev = newnode;
